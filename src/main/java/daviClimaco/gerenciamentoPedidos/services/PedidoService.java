@@ -14,8 +14,8 @@ public class PedidoService {
         this.pedidoRepository = pedidoRepository;
     }
 
-    public void salvar(Pedido pedido){
-        pedidoRepository.save(pedido);
+    public Pedido salvar(Pedido pedido){
+        return pedidoRepository.save(pedido);
     }
 
     public void deletar(Long id){
@@ -28,5 +28,10 @@ public class PedidoService {
 
     public List<Pedido> buscarTodosPedidos(){//se nao passar parametro busca todos
         return pedidoRepository.findAll();
+    }
+
+    public Pedido atualizar(Long id, Pedido pedido){
+        pedido.setId(id);
+        return pedidoRepository.save(pedido);
     }
 }
